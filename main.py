@@ -8,15 +8,19 @@ import queue
 import cv2
 from Feed.camera_feed import CaptureThread
 from GUI.gui import GUI
+from PrivateCar.private_recognition import PrivateCarThread
+
 
 work_queue = queue.Queue(3)
 camera_feed_thread = CaptureThread(work_queue)
+private_car_thread = PrivateCarThread(work_queue)
 
 def initialize():
     """ Initialziation and configuration """
     time.sleep(1)
     print(" > Camera feed initialization ... ")
     camera_feed_thread.start()
+    private_car_thread.start()
 
 
 
